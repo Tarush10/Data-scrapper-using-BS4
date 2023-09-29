@@ -30,3 +30,23 @@ list_dict = {'Movies':movies, 'Total Collection':collection}
 df = pd.DataFrame(list_dict) 
 
 df.to_csv('data.csv', index=False)
+
+list_dict = {'Movies': movies, 'Total Collection': collection}
+
+df = pd.DataFrame(list_dict)
+
+# Convert collection values to numeric
+df['Total Collection'] = pd.to_numeric(df['Total Collection'].str.replace('[\$,]', '', regex=True))
+
+
+# Plotting the graph
+plt.figure(figsize=(15, 8))
+plt.bar(df['Movies'], df['Total Collection'], color='skyblue')
+plt.xlabel('Movies')
+plt.ylabel('Total Collection')
+plt.title('Box Office Collection of Movies')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+
+# Display the graph
+plt.show()
