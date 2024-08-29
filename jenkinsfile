@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Development') {
+            steps {
+                echo ''
+            }
+        }
+        stage('QA'){
+            steps{
+                echo 'QA'
+            }
+        }
+        stage('UAT'){
+            steps{
+                echo 'Hello - UAT'
+                bat 'git clone https://github.com/ChiragArora31/BinomialOptionPricingModel'
+            }
+        }
+        
+        
+    }
+}
+
